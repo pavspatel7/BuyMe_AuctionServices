@@ -4,20 +4,37 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>By Me</title>
 </head>
 <body>
-	<form action = "SqlProduct" method = "post">
-	Brand: <input type = "text" placeholder = "Brand" name = "Brand"> <br><br>
-	Model: <input type = "text" placeholder = "Model" name = "Model"> <br><br>
-	Carrier: <input type = "text" placeholder = "Carrier" name = "Carrier"> <br><br>
-	Capacity: <input type = "text" placeholder = "Capacity" name = "Capacity"><br><br>
-	Color: <input type = "text" placeholder = "Color" name = "Color"><br><br>
-	Condition: <input type = "text" placeholder = "Color" name = "Condition"><br><br>
-	Description: 
-	<textarea rows = "5" cols = "60" name = "description"></textarea><br>
-	<input type = "submit" value = "Next" name = "Click">
-	</form>
+	<form action = "AuctionStoreing" method = "Post" enctype = "multipart/form-data">
 	
+	<label for = "Brand" >Brand</label>
+	<input type = "text" placeholder = "Brand" id = "Brand" name = "Brand"> <br><br>
+	
+	<label for  = "Model">Model</label>
+	<input type = "text" placeholder = "Model" id = "Model" name = "Model"> <br><br>
+	
+	<label for = "Carrier"> Carrier </label>
+	<input type = "text" placeholder = "Carrier" id = "Carrier"name = "Carrier"> <br><br>
+	
+	<label for = "Capacity">Capacity</label>
+	<input type = "text" placeholder = "Capacity" id = "Capacity" name = "Capacity"><br><br>
+	
+	<label for = "Color"> Color </label>
+	<input type = "text" placeholder = "Color" id = "Color" name = "Color"><br><br>
+	
+	<label for = "Condition"> Condition</label>
+	<input type = "text" placeholder = "Condition" id = "Condition" name = "Condition"><br><br>
+	
+	<label for = "Description"> Description </label>
+	<textarea rows = "5" cols = "60" name = "description" id = "Description"></textarea><br><br>
+	
+	<label for = "Images">Upload Product Images</label>
+	<input type = "file" name = "files" id = "images" accept="image/png, image/gif, image/jpeg" multiple required><br><br>
+	
+	
+	<input type = "submit" value = "Next" name = "Phone">
+	</form>
 </body>
 </html>
