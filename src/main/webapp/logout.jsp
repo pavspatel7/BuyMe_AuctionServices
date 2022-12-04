@@ -11,7 +11,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
 		<% HttpSession sess = request. getSession(false);
 			if(sess == null)
 			{

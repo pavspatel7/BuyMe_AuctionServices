@@ -13,12 +13,27 @@
 </style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<title> I hate this class </title>
 </head>
 <body>
 
+<%
+
+// Missing in Laptop: Color, Storage, Reslontion, Condition, display technology, ("price" if needed up to you)
+// Missing in Phone: Screensize, Resolution, display technology, ("price" if needed up to you)
+// Missing in TV: Color, change size to screensize, display technology, ("price" if needed up to you)
+
+String input = request.getParameter("Search");
+//out.print(input);
+String[] str = input.split(" ", 10);
+
+for(int i=0; i<str.length; i++)
+{
+	
+}
 
 
+
+%>
 
 
 
