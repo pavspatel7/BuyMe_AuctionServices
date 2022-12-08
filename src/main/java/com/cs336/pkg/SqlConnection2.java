@@ -1,3 +1,4 @@
+package com.cs336.pkg;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,9 +16,17 @@ public class SqlConnection2
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 		}
 		catch(ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch(IllegalAccessException e)
+		{
+			e.printStackTrace();
+		}
+		catch(InstantiationException e)
 		{
 			e.printStackTrace();
 		}
@@ -44,5 +53,13 @@ public class SqlConnection2
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public static void main(String[] args)
+	{
+		SqlConnection2 con = new SqlConnection2();
+		Connection connection = con.getConnection();
+		System.out.println(connection);
+		con.closeConnection(connection);
 	}
 }

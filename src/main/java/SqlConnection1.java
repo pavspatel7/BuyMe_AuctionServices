@@ -84,7 +84,7 @@ public class SqlConnection1 extends HttpServlet {
 		try
 		{
 			//This initialize the class of driver 
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://127.0.0.1:3306/?user = root";
 			String user = "root";
 			String pass = "Straw125Berry$";
@@ -116,7 +116,7 @@ public class SqlConnection1 extends HttpServlet {
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://127.0.0.1:3306/?user = root";
 			String user = "root";
 			String pass = "Straw125Berry$";

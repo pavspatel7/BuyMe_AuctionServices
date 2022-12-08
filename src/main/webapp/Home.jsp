@@ -14,7 +14,8 @@
 	<link rel="stylesheet" href="/css/site.css">
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-	
+		body {background-color: powderblue;}
+		
 		main>.container {
 		    padding: 60px 15px 0;
 		}
@@ -44,7 +45,7 @@
 		
 		.minHeight {
 		    min-height: 80vh;	    
-	}
+		}
 	</style>
 </head>
 <body class="d-flex flex-column h-100">
@@ -73,6 +74,12 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
+                    <a class="nav-link" href="">ABC</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">DEF</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="">XYZ</a>
                 </li>
                 <li class="nav-item">
@@ -83,47 +90,52 @@
     </div>
 </nav>
 
-    <main class="flex-shrink-0">
+<main class="flex-shrink-0">
     <div class="container-fluid h-100 minHeight">
         <div class="row h-100 row-cols-1 row-cols-md-2 gy-2">
             <div class="col col-md-12">
                 <div class="container text-center text-light h-100">
-                
-                
-                    <form action = "Display.jsp" class="search-bar">
+
+                    <form action = "ComplexSearch.jsp">
 						<Input Type = 'text' Placeholder = 'Search: Laptop,TV,Phone..' Name = 'Search'>
 						<Input Type = 'Submit' Value = 'Search' Name = 'Click'>
 					</form>
-					
-					
+					<br><br>
+
                 </div>
             </div>
             <div class="col col-md-4 order-last">
-                <div class="bg-dark text-light h-100">
-                    
-                    
-                    <img src="img/laptopimg.jpg" height="500" width="500" alt="Laptop">
-                    
-                    
+                <div class="h-100">
+                	<form action=Display.jsp>
+						<img src="img/phoneimg.jpg" height="400" width="490" alt="Phone"><br><br>
+						<center><Input Type ="Submit" Name="img" Value="Click here to view latest deals on Phones!!!"></center>
+					</form>
                 </div>
             </div>
             <div class="col col-md-4">
-                <div class="bg-secondary text-white h-100">
-                    COL THREE
+                <div class="h-100">
+                    <form action=Display.jsp>
+						<img src="img/laptopimg.jpg" height="400" width="490" alt="Laptop"><br><br>
+						<center><input type ="Submit" name="img" value="Click here to view latest deals on Laptops!!!"></center>
+					</form>
                 </div>
             </div>
             <div class="col col-md-4">
-                <div class="bg-secondary text-white h-100">
-                    COL THREE
+                <div class="h-100">
+                   	<form action=Display.jsp>
+						<img src="img/tvimg.jpg" height="400" width="490" alt="TV"><br><br>
+						<center><input type ="Submit" name="img" value="Click here to view latest deals on TV's!!!"></center>
+					</form>
                 </div>
             </div>
         </div>
    </div>
 </main>
-    
+
     <footer class="footer mt-auto py-3 bg-dark sticky-footer">
         <div class="container-fluid text-center">
-            <span class="text-white">BuyMe: Auction Services By Pavitra Patel, Aditi Patel, Romil Patel, & Smit Patel</span>
+            <span class="text-white">BuyMe: An Online Auction Service</span><br>
+        	<span class="text-white">By Pavitra Patel, Aditi Patel, Romil Patel, & Smit Patel</span>
         </div>
     </footer>
 </body>
