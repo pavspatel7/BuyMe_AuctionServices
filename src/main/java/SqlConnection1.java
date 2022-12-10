@@ -47,37 +47,7 @@ public class SqlConnection1 extends HttpServlet {
 		{
 			login(request, response);
 		}
-//		else if(request.getParameter("Click").equalsIgnoreCase("Display"))
-//		{
-//			display(request, response);
-//		}
-
 	}
-	
-//	protected void display(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-//	{
-//		try
-//		{
-//			Class.forName("com.mysql.jdbc.Driver");
-//			String url = "jdbc:mysql://127.0.0.1:3306/?user = root";
-//			String user = "root";
-//			String pass = "Straw125Berry$";
-//			String input = request.getParameter("Search");
-//			Connection con = DriverManager.getConnection(url,user,pass);
-//			Statement stmt = con.createStatement();
-//			
-//			String sql = "SELECT*FROM clone.product WHERE Product_Type='"+input+"'";
-//
-//			stmt.executeUpdate(sql);
-//			con.close();
-//			stmt.close();
-//			//response.sendRedirect("Login.jsp");
-//		}
-//		catch(ClassNotFoundException | SQLException e)
-//		{
-//			e.printStackTrace();
-//		}
-//	}
 	
 	protected void singIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
