@@ -19,6 +19,10 @@
   		margin-left: auto;
 		margin-right: auto;
 	}
+	.createalert
+	{
+		text-align: center;
+	}
 	
 </style>
 <meta charset="ISO-8859-1">
@@ -67,6 +71,9 @@
 				</th>
 				<th>
 					<%out.print("Quantity"); %>
+				</th>
+				<th>
+					<%out.print("Action"); %>				
 				</th>
 			</tr>
 <%
@@ -284,9 +291,26 @@
 				<th><%out.println(rs.getString("Description")); %></th>
 				<th><%out.println(rs.getInt("Price")); %></th>
 				<th><%out.println(rs.getInt("Quantity")); %></th>
+				<th>
+					<form action="ViewAuction.jsp">
+						<input type="submit" name="viewauction" value="View Auction?">
+					</form>
+				</th>
 			</tr>
 <%
-		}	
+		}
+%>
+</table>
+
+<br><br>
+<div class="createalert">
+	<p>Didn't find what you were looking for?<br>
+	We can help you set up an alert and you will be notified when the product becomes available.</p>
+	<form action="CreateAlert.jsp">
+		<input type="submit" name="createalert" value="Create Alert?">
+	</form>
+</div>
+<%	
 		rs.close();
 		stmt.close();
 		con.close();
@@ -296,6 +320,5 @@
 		e.printStackTrace();
 	}
 %>
-</table>
 </body>
 </html>
