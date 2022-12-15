@@ -78,7 +78,7 @@
                     <a class="nav-link" href="DisplayAlert.jsp">My_Alerts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">DEF</a>
+                    <a class="nav-link" href="BrowseQA.jsp">Browse_Q&A</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">XYZ</a>

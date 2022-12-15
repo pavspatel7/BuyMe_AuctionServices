@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="Ebay_Clone.*"%>
+	pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html>
@@ -17,12 +17,12 @@
 	<%
 	PreparedStatement ps = null;
 	ResultSet result = null;
-	ApplicationDB db = new ApplicationDB();	
+	SqlConnection2 db = new SqlConnection2();	
 	Connection connect = db.getConnection();	
 
 	try {
 		String username = (session.getAttribute("user")).toString();
-		String questionsQuery = "SELECT * FROM question_answers";
+		String questionsQuery = "SELECT * FROM clone.question_answers";
 		String check = "Customer rep hasn't answered yet";
 		ps = connect.prepareStatement(questionsQuery);
 		result = ps.executeQuery();

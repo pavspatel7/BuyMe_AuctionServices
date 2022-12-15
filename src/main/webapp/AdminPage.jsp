@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	Welcome <%=session.getAttribute("admin") %> To PhoneBay 
+	Welcome <%=session.getAttribute("admin") %> To BuyMe
 	
 		<div style="float: right;">
 			<form style="display: inline;" method="post" action="logout.jsp"> <input type="submit" value="logout"></form>
