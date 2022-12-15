@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="Ebay_Clone.*"%>
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,7 +30,7 @@
 				<td>Email:</td><td><input type="text" name="Email" required></td>
 			</tr>
 			<tr>
-				<td>Username:</td><td><input type="text" name="User_Name" required></td>
+				<td>UserName:</td><td><input type="text" name="User_Name" required></td>
 			</tr>
 			<tr>
 				<td>Password:</td><td><input type="password" name="Password" required></td>

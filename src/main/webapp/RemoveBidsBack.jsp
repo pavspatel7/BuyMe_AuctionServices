@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="Ebay_Clone.*"%>
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,7 +19,7 @@
 	<%
 		try {
 			//Get the database connection
-			ApplicationDB db = new ApplicationDB();	
+			SqlConnection2 db = new SqlConnection2();	
 			Connection connect = db.getConnection();
 	
 			//Create a SQL statement
@@ -29,14 +29,14 @@
 			String productId = request.getParameter("productID");
 			
 			Boolean Winner, CurrentWinner;
-			String check = "Select * FROM Bid_Information LEFT JOIN Auction Using (productId) WHERE productId = " + productId +" AND Bid_Information.currentBid = Auction.HighestBid";
+			String check = "Select * FROM clone.Bid_Information LEFT JOIN Auction Using (productId) WHERE productId = " + productId +" AND Bid_Information.currentBid = Auction.HighestBid";
 			ResultSet result = stmt.executeQuery(check);
 			
 			
-					String delete = "DELETE FROM Bid_Information WHERE BidId = " + Id;
+					String delete = "DELETE FROM clone.Bid_Information WHERE BidId = " + Id;
 					PreparedStatement ps = connect.prepareStatement(delete);
 					ps.executeUpdate();
-					String update = "UPDATE Auction SET HighestBid = (Select Max(currentBid) From Bid_Information Where productId = " + productId + ") WHERE productId = " + productId ;
+					String update = "UPDATE clone.Auction SET HighestBid = (Select Max(currentBid) From Bid_Information Where productId = " + productId + ") WHERE productId = " + productId ;
 					ps = connect.prepareStatement(update);
 					ps.executeUpdate();
 					

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="Ebay_Clone.*"%>
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,7 +19,7 @@
 	<%
 		try {
 			//Get the database connection
-			ApplicationDB db = new ApplicationDB();	
+			SqlConnection2 db = new SqlConnection2();	
 			Connection connect = db.getConnection();
 	
 			//Create a SQL statement
@@ -28,7 +28,7 @@
 			String newE = request.getParameter("newE");
 			String user  = (String) session.getAttribute("Modify User");
 			//Make an insert statement for the Sells table:
-			String update = "UPDATE user SET email = \'" + newE + "\' WHERE User_Name = \'" + user + "\'";
+			String update = "UPDATE clone.user SET email = \'" + newE + "\' WHERE User_Name = \'" + user + "\'";
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = connect.prepareStatement(update);
 	

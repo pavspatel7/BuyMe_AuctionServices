@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="UTF-8" import="Ebay_Clone.*"%>
+    pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*,java.text.*,java.time.*,java.util.Date"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
@@ -22,22 +22,23 @@ h1{
 
 </head>
 <body>
-<img class="image" src="logo.jpg">
+<br><br><br><br><br>
+<center><img class="image" src="img/logo.png"></center>
 
 <center>
-<h1>Hello</h1>
 <h2>Sign in to BuyME or 
-<a id="create-account-link" href="CreateNewUserFront.jsp">create an account</a>
+<a id="create-account-link" href="CreateNewUserFront.jsp">Create an Account</a>
 </h2>
 	<form action="LoginCheck.jsp" method="POST">
-       Username: <input type="text" name="Username"/> <br/>
-       Password: <input type="password" name="Password"/> <br/>
+       UserName: <input type="text" name="Username"/> <br><br>
+       Password: <input type="password" name="Password"/> <br><br>
        Log-in as 
 			<select name="Login_Type" size=1 required>
 				<option value="admin">Admin</option>
 				<option value="customer_representative">Customer Representative</option>
-				<option value="user">user</option>
+				<option value="user">User</option>
 			</select>
+			<br><br>
 			<input type="submit" value="Login">
      </form>
 </center>

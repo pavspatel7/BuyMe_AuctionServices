@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="com.cs336.pkg.*" %>
+<%@ page import = "java.io.*, java.util.*, java.sql.*" %>
+<%@ page import = "javax.servlet.http.*, javax.servlet.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +47,58 @@
 			<div class="col">
 				<div class="bg-secondary text-light h-100 p-2">
 
+<%
+try
+{
+	SqlConnection2 db = new SqlConnection2();
+	Connection con = db.getConnection();
+	Statement stmt = con.createStatement();
+	Random rand = new Random();
+	
+	HttpSession sess = request.getSession(false);
+	String name = (String)sess.getAttribute("user");	
+	String producttype = request.getParameter("producttype");
+	String model = request.getParameter("model");
+	String brand = request.getParameter("brand");
+	String description = request.getParameter("description");
+	int status=0;
+		
+	ResultSet rows;
+	int alertid;
+	do
+	{
+		alertid = rand.nextInt((99999 - 100) + 1) + 10;
+		String sql1 = "SELECT Aid FROM clone.alerts WHERE Aid = '"+alertid+"'";
+		rows = stmt.executeQuery(sql1);
+	}
+	while(rows.next());
+	String insert = "INSERT INTO clone.alerts(User_Name,Aid,Product_Type,Model,Brand,Description,Status) VALUES" 
+	+ "(?, ?, ?, ?, ?, ?, ?)";
+	PreparedStatement ps = con.prepareStatement(insert);
+	ps.setString(1, name);
+	ps.setInt(2, alertid);
+	ps.setString(3, producttype);
+	ps.setString(4, model);
+	ps.setString(5, brand);
+	ps.setString(6, description);
+	ps.setInt(7, status);
+
+	ps.executeUpdate();
+
+	ps.close();
+	rows.close();
+	stmt.close();
+	con.close();
+}
+catch(Exception e)
+{
+	e.printStackTrace();
+}
+%>
 					<h2>Alert Saved Successfully!!!</h2>
+					<form action="DisplayAlert.jsp">
+						<input type="Submit" value="View Alert Status(es)?">
+					</form>
 
 				</div>
 			</div>

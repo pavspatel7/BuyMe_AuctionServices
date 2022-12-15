@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="UTF-8" import="Ebay_Clone.*"%>
+    pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
@@ -19,14 +19,14 @@
 	<% try{
 	
 			//Get the database connection
-			ApplicationDB db = new ApplicationDB();	
+			SqlConnection2 db = new SqlConnection2();	
 			Connection con = db.getConnection();		
 
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 
 			//Make a SELECT query from the table specified by the 'command' parameter at the index.jsp
-			String str = "SELECT questionId, question FROM Question_Answers WHERE isAnswered = 0";
+			String str = "SELECT questionId, question FROM clone.Question_Answers WHERE isAnswered = 0";
 
 			//Run the query against the database.
 			ResultSet result = stmt.executeQuery(str);

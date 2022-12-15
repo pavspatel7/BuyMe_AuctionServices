@@ -53,17 +53,17 @@
 
 <%
 		HttpSession sess = request.getSession(false);
-		String name = (String)sess.getAttribute("Users");
+		String name = (String)sess.getAttribute("user");
 	
 		response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
 		response.setHeader("Pragma", "no-cache");
-		response.setHeader("Expires", "0"); 
+		response.setHeader("Expires", "0");
 		
-		if(session.getAttribute("Users")==null)
+		if(session.getAttribute("user")==null)
 		{
 		    response.sendRedirect(request.getContextPath() + "/Logout.jsp");
 		}
-	%>
+%>
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
