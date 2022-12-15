@@ -75,7 +75,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="">ABC</a>
+                    <a class="nav-link" href="DisplayAlert.jsp">My_Alerts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">DEF</a>
