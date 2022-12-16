@@ -97,16 +97,11 @@
             <div class="col col-md-12">
                 <div class="container text-center text-light h-100">
 
-                    <form action = "Display.jsp">
+                    <form action = "ComplexSearch.jsp">
 						<Input Type = 'text' Placeholder = 'Search: Laptop,TV,Phone..' Name = 'Search'>
 						<Input Type = 'Submit' Value = 'Search' Name = 'Click'>
 					</form>
-					
-					<br>
-					<form action = "ComplexSearch.jsp">
-						<Input Type = 'Submit' Value = 'Try Complex Search Instead?' Name = 'Click'>
-					</form>
-					<br>
+					<br><br>
 
                 </div>
             </div>
@@ -140,7 +135,7 @@
 
     <footer class="footer mt-auto py-3 bg-dark sticky-footer">
         <div class="container-fluid text-center">
-            <span class="text-white">BuyMe: An Online Auction Service</span>
+            <span class="text-white">BuyMe: An Online Auction Service</span><br>
         	<span class="text-white">By Pavitra Patel, Aditi Patel, Romil Patel, & Smit Patel</span>
         </div>
     </footer>
