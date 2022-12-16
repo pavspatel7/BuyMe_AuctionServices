@@ -38,7 +38,7 @@
 			String Admin_ID = result.getString("AdminId");
 			result.close();
 			//Make an insert statement for the Sells table:
-			String insert = "INSERT INTO CustomerRepInformation(username, password, name, AdminId)"
+			String insert = "INSERT INTO clone.CustomerRepInformation(username, password, name, AdminId)"
 					+ "VALUES (?, ?, ?, ?)";
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = connect.prepareStatement(insert);

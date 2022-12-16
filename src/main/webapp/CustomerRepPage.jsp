@@ -11,7 +11,7 @@
 Welcome <%=session.getAttribute("customerRep") %> To PhoneBay 
 
 <div style="float: right;">
-			<form style="display: inline;" method="post" action="logout.jsp"><input type="submit" value="logout"></form>
+			<form style="display: inline;" method="post" action="Logout.jsp"><input type="submit" value="logout"></form>
 		</div>
 		<div style="clear: both;"></div>
 		<hr/>

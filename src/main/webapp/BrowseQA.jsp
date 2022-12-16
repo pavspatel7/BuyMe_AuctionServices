@@ -81,7 +81,7 @@ try
 	{
 		input = "";
 	}
-	String query = "SELECT question, answer, isAnswered FROM clone.qa WHERE question LIKE '%" + input + "%'";
+	String query = "SELECT question, answer, isAnswered FROM clone.question_answers WHERE question LIKE '%" + input + "%'";
 	ResultSet rs = stmt1.executeQuery(query);
 	while(rs.next())
 	{

@@ -19,7 +19,7 @@
 		</form>
 	</div>
 	<h2>
-		<a href="questions.jsp">View all Questions</a><br>
+		<a href="BrowseQA.jsp">View all Questions</a><br>
 	</h2>
 </body>
 </html>

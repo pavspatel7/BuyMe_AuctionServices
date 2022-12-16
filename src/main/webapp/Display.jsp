@@ -23,6 +23,14 @@
 	{
 		text-align: center;
 	}
+	.sort
+	{
+		padding-left: 550px;
+	}
+	.sort1
+	{
+		padding-left: 720px;
+	}
 	
 </style>
 <meta charset="ISO-8859-1">
@@ -58,6 +66,19 @@
 
 <br><br><br>
 
+		<p class="sort"><span style="font-size: 25px">Sort your results based on one of the following?</span></p>
+		<form action="DisplaySort.jsp">
+		<p class="sort1">
+			<input type="checkbox" id="sortprice" name="sortprice" value="price">
+			<label for="sortprice"> Price</label><br>
+			<input type="checkbox" id="sortproducttype" name="sortproducttype" value="producttype">
+			<label for="sortproducttype"> Product Type</label><br>
+			<input type="checkbox" id="available" name="available" value="available">
+			<label for="available"> Availability</label><br>
+			<input type="Submit" name="SortSubmit" value="Apply Filters?">
+		</p>
+		</form>
+
 <table class="table-style">
 			<tr>
 				<th>
@@ -84,6 +105,137 @@
 		Statement stmt = con.createStatement();
 		StringBuilder query = new StringBuilder("");
 		String image  = request.getParameter("img");
+		String input = request.getParameter("Search");
+		String cs = request.getParameter("producttype");
+		
+		if(cs == null)
+		{
+			cs = "";
+		}
+		if(cs.equals("0"))
+		{
+			cs = "Phone";
+			String brand = request.getParameter("pbrand");
+			String model = request.getParameter("pmodel");
+			String color = request.getParameter("pcolor");
+			String storage = request.getParameter("pstorage");
+			String carrier = request.getParameter("pcarrier");
+			String condition = request.getParameter("pcondition");
+			query.append("SELECT * FROM clone.product WHERE Product_Type='"+cs+"'");
+			if(brand != "")
+			{
+				query.append(" and Brand='"+brand+"'");
+			}
+			if(model != "")
+			{
+				query.append(" and Model='"+model+"'");
+			}
+			if(color != "")
+			{
+				query.append(" and Color='"+color+"'");
+			}
+			if(storage != "")
+			{
+				query.append(" and Storage_Cap='"+storage+"'");
+			}
+			if(carrier != "")
+			{
+				query.append(" and Carrier='"+carrier+"'");
+			}
+			if(condition != "")
+			{
+				query.append(" and Conditions='"+condition+"'");
+			}
+			out.println(query.toString());
+		}
+		else if(cs.equals("1"))
+		{
+			cs = "TV";
+			String brand = request.getParameter("tvbrand");
+			String model = request.getParameter("tvmodel");
+			String color = request.getParameter("tvcolor");
+			String size = request.getParameter("tvsize");
+			String type = request.getParameter("tvtype");
+			String resolution = request.getParameter("tvresolution");
+			String condition = request.getParameter("tvcondition");
+			
+			query.append("SELECT * FROM clone.product WHERE Product_Type='"+cs+"'");
+			if(brand != "")
+			{
+				query.append(" and Brand='"+brand+"'");
+			}
+			if(model != "")
+			{
+				query.append(" and Model='"+model+"'");
+			}
+			if(color != "")
+			{
+				query.append(" and Color='"+color+"'");
+			}
+			if(size != "")
+			{
+				query.append(" and Screen_Size='"+size+"'");
+			}
+			if(type != "")
+			{
+				query.append(" and Screen_Type='"+type+"'");
+			}
+			if(resolution != "")
+			{
+				query.append(" and Resolution='"+resolution+"'");
+			}
+			if(condition != "")
+			{
+				query.append(" and Conditions='"+condition+"'");
+			}
+			out.println(query.toString());
+		}
+		else if(cs.equals("2"))
+		{
+			cs = "Laptop";
+			String brand = request.getParameter("lbrand");
+			String model = request.getParameter("lmodel");
+			String color = request.getParameter("lcolor");
+			String screensize = request.getParameter("lscreensize");
+			String processor = request.getParameter("lprocessor");
+			String ram = request.getParameter("lram");
+			String operatingsys = request.getParameter("loperatingsys");
+			String condition = request.getParameter("lcondition");
+			query.append("SELECT * FROM clone.product WHERE Product_Type='"+cs+"'");
+			if(brand != "")
+			{
+				query.append(" and Brand='"+brand+"'");
+			}
+			if(model != "")
+			{
+				query.append(" and Model='"+model+"'");
+			}
+			if(color != "")
+			{
+				query.append(" and Color='"+color+"'");
+			}
+			if(screensize != "")
+			{
+				query.append(" and Screen_Size='"+screensize+"'");
+			}
+			if(processor != "")
+			{
+				query.append(" and Processor='"+processor+"'");
+			}
+			if(ram != "")
+			{
+				query.append(" and RAM='"+ram+"'");
+			}
+			if(operatingsys != "")
+			{
+				query.append(" and Operating_Sys='"+operatingsys+"'");
+			}
+			if(condition != "")
+			{
+				query.append(" and Conditions='"+condition+"'");
+			}
+			out.println(query.toString());
+		}
 		
 		if(image == null)
 		{
@@ -103,9 +255,8 @@
 			String a = "TV";
 			query.append("SELECT * FROM clone.product WHERE product_Type='"+a+"'");
 		}
-		else
+		else if(input != null)
 		{
-			String input = request.getParameter("Search");
 			if(input.equals(""))
 			{
 				response.sendRedirect("Home.jsp");
@@ -122,7 +273,14 @@
 					query.append(" AND");
 			}
 		}
-				
+		
+		if(query.toString() != null || !(query.toString().equals("")))
+		{
+			String q = query.toString();
+			HttpSession sess = request.getSession(false);
+			sess.setAttribute("q1", q);
+		}
+		
 		ResultSet rs = stmt.executeQuery(query.toString());
 		while(rs.next())
 		{
@@ -137,16 +295,9 @@
 						<input type="submit" name="viewauction" value="View Auction?">
 					</form>
 				</th>
-			</tr>
-			
-			
-						
-<%			
+			</tr>					
+<%
 		}
-		
-		
-		
-		rs.close();
 		stmt.close();
 		con.close();
 	}
@@ -155,5 +306,14 @@
 		e.printStackTrace();
 	}
 %>
+</table>
+<br><br>
+<div class="createalert">
+	<p>Didn't find what you were looking for?<br>
+	We can help you set up an alert and you will be notified when the product becomes available.</p>
+	<form action="CreateAlert.jsp">
+		<input type="submit" name="createalert" value="Create Alert?">
+	</form>
+</div>
 </body>
 </html>

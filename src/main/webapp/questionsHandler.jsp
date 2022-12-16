@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="Ebay_Clone.*"%>
+	pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
@@ -13,7 +13,7 @@
 <body>
 <% 
 
-ApplicationDB db = new ApplicationDB();	
+SqlConnection2 db = new SqlConnection2();
 Connection connect = db.getConnection();	
 PreparedStatement ps = null;
 try {
@@ -26,7 +26,7 @@ try {
 	String username = (session.getAttribute("user")).toString();
 	String question = request.getParameter("question");
 	if (question != null) {
-		String insert = "INSERT INTO question_answers (username, question, answer)" + "VALUES (?, ?, ?)";
+		String insert = "INSERT INTO clone.question_answers (username, question, answer)" + "VALUES (?, ?, ?)";
 		ps = connect.prepareStatement(insert);
 		
 		ps.setString(1, username);

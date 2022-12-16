@@ -78,13 +78,13 @@
                     <a class="nav-link" href="DisplayAlert.jsp">My_Alerts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="BrowseQA.jsp">Browse_Q&A</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="">XYZ</a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="postQuestion.jsp">Help</a>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Logout.jsp">LogOut</a>
+                    <a class="nav-link" href="Logout.jsp">Log Out</a>
                 </li>
             </ul>
         </div>
