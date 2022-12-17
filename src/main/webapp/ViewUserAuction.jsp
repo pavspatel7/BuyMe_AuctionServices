@@ -64,13 +64,13 @@
 				ain = r.getInt("Auction_Num");
 				sess.setAttribute("auctionID", ain);
 			}
-			
-			
-			
-			
-			
-			
-			
+%>			
+			<form action="SimilarAuctions.jsp">
+				<p class="text-center">
+				<input type = "Submit" value = "Click here to view similar items on auctions in the preceding month!!!" name = "Submit">
+				</p>
+			</form>
+<%						
 			Statement stmt1 = con.createStatement();
 			Statement stmt2 = con.createStatement();
 			
@@ -291,23 +291,6 @@
 			<% 
 			stmt1.close();
 			stmt2.close();
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			
 			r.close();
 			s.close();
