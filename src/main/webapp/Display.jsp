@@ -25,7 +25,7 @@
 	}
 	.sort
 	{
-		padding-left: 550px;
+		padding-left: 530px;
 	}
 	.sort1
 	{
@@ -78,9 +78,20 @@
 			<input type="Submit" name="SortSubmit" value="Apply Filters?">
 		</p>
 		</form>
+		
+		<form action = "ViewUserAuction.jsp">
+		<p class="text-center">
+			<span style="font-size: 20px">Please enter the Product Number that you want to see the auction details for:</span><br>
+			<input type="text" name="pinput" placeholder="Enter Product Number"><br>
+			<input type="Submit" name="asubmit" value="View Auction?">
+		</p>
+		</form>
 
 <table class="table-style">
 			<tr>
+				<th>
+					<%out.print("Product Number"); %>
+				</th>
 				<th>
 					<%out.print("Product Type"); %>
 				</th>
@@ -94,7 +105,10 @@
 					<%out.print("Quantity"); %>
 				</th>
 				<th>
-					<%out.print("Action"); %>				
+					<%out.print("Status"); %>
+				</th>
+				<th>
+					<%out.print("End Date & Time"); %>
 				</th>
 			</tr>
 <%
@@ -121,32 +135,31 @@
 			String storage = request.getParameter("pstorage");
 			String carrier = request.getParameter("pcarrier");
 			String condition = request.getParameter("pcondition");
-			query.append("SELECT * FROM clone.product WHERE Product_Type='"+cs+"'");
+			query.append("SELECT * FROM clone.Product p JOIN clone.product_for_auction pfa ON p.Pid=pfa.Pid JOIN clone.Auctions a ON a.Auction_Num=pfa.Auction_Num WHERE p.Product_Type='"+cs+"'");
 			if(brand != "")
 			{
-				query.append(" and Brand='"+brand+"'");
+				query.append(" and p.Brand='"+brand+"'");
 			}
 			if(model != "")
 			{
-				query.append(" and Model='"+model+"'");
+				query.append(" and p.Model='"+model+"'");
 			}
 			if(color != "")
 			{
-				query.append(" and Color='"+color+"'");
+				query.append(" and p.Color='"+color+"'");
 			}
 			if(storage != "")
 			{
-				query.append(" and Storage_Cap='"+storage+"'");
+				query.append(" and p.Storage_Cap='"+storage+"'");
 			}
 			if(carrier != "")
 			{
-				query.append(" and Carrier='"+carrier+"'");
+				query.append(" and p.Carrier='"+carrier+"'");
 			}
 			if(condition != "")
 			{
-				query.append(" and Conditions='"+condition+"'");
+				query.append(" and p.Conditions='"+condition+"'");
 			}
-			out.println(query.toString());
 		}
 		else if(cs.equals("1"))
 		{
@@ -159,7 +172,7 @@
 			String resolution = request.getParameter("tvresolution");
 			String condition = request.getParameter("tvcondition");
 			
-			query.append("SELECT * FROM clone.product WHERE Product_Type='"+cs+"'");
+			query.append("SELECT * FROM clone.Product p JOIN clone.product_for_auction pfa ON p.Pid=pfa.Pid JOIN clone.Auctions a ON a.Auction_Num=pfa.Auction_Num WHERE Product_Type='"+cs+"'");
 			if(brand != "")
 			{
 				query.append(" and Brand='"+brand+"'");
@@ -188,7 +201,6 @@
 			{
 				query.append(" and Conditions='"+condition+"'");
 			}
-			out.println(query.toString());
 		}
 		else if(cs.equals("2"))
 		{
@@ -201,7 +213,7 @@
 			String ram = request.getParameter("lram");
 			String operatingsys = request.getParameter("loperatingsys");
 			String condition = request.getParameter("lcondition");
-			query.append("SELECT * FROM clone.product WHERE Product_Type='"+cs+"'");
+			query.append("SELECT * FROM clone.Product p JOIN clone.product_for_auction pfa ON p.Pid=pfa.Pid JOIN clone.Auctions a ON a.Auction_Num=pfa.Auction_Num WHERE Product_Type='"+cs+"'");
 			if(brand != "")
 			{
 				query.append(" and Brand='"+brand+"'");
@@ -234,7 +246,6 @@
 			{
 				query.append(" and Conditions='"+condition+"'");
 			}
-			out.println(query.toString());
 		}
 		
 		if(image == null)
@@ -244,16 +255,16 @@
 		if(image.equals("Click here to view latest deals on Phones!!!"))
 		{
 			String a = "Phone";
-			query.append("SELECT * FROM clone.product WHERE product_Type='"+a+"'");		}
+			query.append("SELECT * FROM clone.Product p JOIN clone.product_for_auction pfa ON p.Pid=pfa.Pid JOIN clone.Auctions a ON a.Auction_Num=pfa.Auction_Num WHERE product_Type='"+a+"'");		}
 		else if(image.equals("Click here to view latest deals on Laptops!!!"))
 		{
 			String a = "Laptop";
-			query.append("SELECT * FROM clone.product WHERE product_Type='"+a+"'");
+			query.append("SELECT * FROM clone.Product p JOIN clone.product_for_auction pfa ON p.Pid=pfa.Pid JOIN clone.Auctions a ON a.Auction_Num=pfa.Auction_Num WHERE product_Type='"+a+"'");
 		}
 		else if(image.equals("Click here to view latest deals on TV's!!!"))
 		{
 			String a = "TV";
-			query.append("SELECT * FROM clone.product WHERE product_Type='"+a+"'");
+			query.append("SELECT * FROM clone.Product p JOIN clone.product_for_auction pfa ON p.Pid=pfa.Pid JOIN clone.Auctions a ON a.Auction_Num=pfa.Auction_Num WHERE product_Type='"+a+"'");
 		}
 		else if(input != null)
 		{
@@ -265,7 +276,7 @@
 			String[] arrOfStr = input.split(" ", 10);
 			int len = arrOfStr.length;
 
-			query.append("SELECT * FROM clone.product WHERE");
+			query.append("SELECT * FROM clone.Product p JOIN clone.product_for_auction pfa ON p.Pid=pfa.Pid JOIN clone.Auctions a ON a.Auction_Num=pfa.Auction_Num WHERE");
 			for(int i=0; i<len; i++)
 			{
 				query.append(" description LIKE '%" + arrOfStr[i] + "%'");
@@ -280,22 +291,24 @@
 			HttpSession sess = request.getSession(false);
 			sess.setAttribute("q1", q);
 		}
-		
 		ResultSet rs = stmt.executeQuery(query.toString());
+		String flag="Inactive";
 		while(rs.next())
 		{
+			if(rs.getInt("Active") == 1)
+			{
+				flag="Active";
+			}
 %>
 			<tr>
+				<th><%out.println(rs.getString("Pid")); %></th>
 				<th><%out.println(rs.getString("Product_Type")); %></th>
 				<th><%out.println(rs.getString("Description")); %></th>
 				<th><%out.println(rs.getInt("Price")); %></th>
 				<th><%out.println(rs.getInt("Quantity")); %></th>
-				<th>
-					<form action="ViewAuction.jsp">
-						<input type="submit" name="viewauction" value="View Auction?">
-					</form>
-				</th>
-			</tr>					
+				<th><%out.println(flag); %></th>
+				<th><%out.println(rs.getString("End_Date_Time")); %></th>
+			</tr>
 <%
 		}
 		stmt.close();
@@ -314,6 +327,7 @@
 	<form action="CreateAlert.jsp">
 		<input type="submit" name="createalert" value="Create Alert?">
 	</form>
+	<br><br>
 </div>
 </body>
 </html>

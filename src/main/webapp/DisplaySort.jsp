@@ -25,7 +25,7 @@
 	}
 	.sort
 	{
-		padding-left: 620px;
+		padding-left: 520px;
 	}
 	.sort1
 	{
@@ -78,9 +78,20 @@
 			<input type="Submit" name="SortSubmit" value="Apply Filters?">
 		</p>
 		</form>
+		
+		<form action = "ViewUserAuction.jsp">
+		<p class="text-center">
+			<span style="font-size: 20px">Please enter the Product Number that you want to see the auction details for:</span><br>
+			<input type="text" name="pinput" placeholder="Enter Product Number"><br>
+			<input type="Submit" name="asubmit" value="View Auction?">
+		</p>
+		</form>
 
 <table class="table-style">
 			<tr>
+				<th>
+					<%out.print("Product Number"); %>
+				</th>
 				<th>
 					<%out.print("Product Type"); %>
 				</th>
@@ -94,7 +105,10 @@
 					<%out.print("Quantity"); %>
 				</th>
 				<th>
-					<%out.print("Action"); %>				
+					<%out.print("Status"); %>
+				</th>
+				<th>
+					<%out.print("End Date & Time"); %>				
 				</th>
 			</tr>
 <%
@@ -125,22 +139,25 @@
 			{
 				h1.append(" ORDER BY Quantity DESC");
 			}
-			ResultSet rows = stmt.executeQuery(h1.toString());
-			while(rows.next())
+			ResultSet rs = stmt.executeQuery(h1.toString());
+			String flag="Inactive";
+			while(rs.next())
 			{
+				if(rs.getInt("Active") == 1)
+				{
+					flag="Active";
+				}
 %>
 				<tr>
-				<th><%out.println(rows.getString("Product_Type")); %></th>
-				<th><%out.println(rows.getString("Description")); %></th>
-				<th><%out.println(rows.getInt("Price")); %></th>
-				<th><%out.println(rows.getInt("Quantity")); %></th>
-				<th>
-					<form action="ViewAuction.jsp">
-						<input type="submit" name="viewauction" value="View Auction?">
-					</form>
-				</th>
-			</tr>
-<%	
+					<th><%out.println(rs.getString("Pid")); %></th>
+					<th><%out.println(rs.getString("Product_Type")); %></th>
+					<th><%out.println(rs.getString("Description")); %></th>
+					<th><%out.println(rs.getInt("Price")); %></th>
+					<th><%out.println(rs.getInt("Quantity")); %></th>
+					<th><%out.println(flag); %></th>
+					<th><%out.println(rs.getString("End_Date_Time")); %></th>
+				</tr>
+<%
 			}
 		}
 		stmt.close();
@@ -159,6 +176,7 @@
 	<form action="CreateAlert.jsp">
 		<input type="submit" name="createalert" value="Create Alert?">
 	</form>
+	<br><br>
 </div>
 </body>
 </html>
