@@ -105,9 +105,6 @@
 					<%out.print("Quantity"); %>
 				</th>
 				<th>
-					<%out.print("Status"); %>
-				</th>
-				<th>
 					<%out.print("End Date & Time"); %>				
 				</th>
 			</tr>
@@ -140,13 +137,10 @@
 				h1.append(" ORDER BY Quantity DESC");
 			}
 			ResultSet rs = stmt.executeQuery(h1.toString());
-			String flag="Inactive";
 			while(rs.next())
 			{
 				if(rs.getInt("Active") == 1)
 				{
-					flag="Active";
-				}
 %>
 				<tr>
 					<th><%out.println(rs.getString("Pid")); %></th>
@@ -154,10 +148,10 @@
 					<th><%out.println(rs.getString("Description")); %></th>
 					<th><%out.println(rs.getInt("Price")); %></th>
 					<th><%out.println(rs.getInt("Quantity")); %></th>
-					<th><%out.println(flag); %></th>
 					<th><%out.println(rs.getString("End_Date_Time")); %></th>
 				</tr>
 <%
+				}
 			}
 		}
 		stmt.close();
