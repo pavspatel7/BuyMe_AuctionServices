@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
 <%@ page import = "java.io.*, java.util.*, java.sql.*" %>
 <%@ page import = "javax.servlet.http.*, javax.servlet.*" %>
+<%@ page import = "java.time.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -66,9 +67,6 @@
 					<%out.print("Auction Number"); %>
 				</th>
 				<th>
-					<%out.print("Product Description"); %>
-				</th>
-				<th>
 					<%out.print("Status"); %>
 				</th>
 			</tr>
@@ -80,7 +78,7 @@ try
 	Statement stmt1 = con.createStatement();
 	HttpSession sess = request.getSession(false);
 	String name = (String)sess.getAttribute("user");
-	String query = "SELECT * FROM clone.Product p JOIN clone.product_for_auction pfa ON p.Pid=pfa.Pid JOIN clone.Auctions a ON a.Auction_Num=pfa.Auction_Num WHERE a.User_Name='"+name+"'";
+	String query = "SELECT DISTINCT a.Auction_Num, a.Active, a.End_Date_Time, a.Winner FROM clone.buyer_bids b, clone.auctions a WHERE b.Auction_Num=a.Auction_Num AND b.User_Name='"+name+"'";
 	ResultSet rs = stmt1.executeQuery(query);
 	String flag = "";
 	while(rs.next())
@@ -96,7 +94,6 @@ try
 %>
 			<tr>
 				<th><%out.println(rs.getInt("Auction_Num")); %></th>
-				<th><%out.println(rs.getString("Description")); %></th>
 				<th><%out.println(flag); %></th>
 			</tr>
 <%
