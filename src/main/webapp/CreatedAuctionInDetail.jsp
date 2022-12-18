@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>BuyMe: Congrats!</title>
 </head>
 <style>
 	body
@@ -16,6 +16,40 @@
 	}
 </style>
 <body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="Home.jsp">BuyMe: Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="DisplayAlert.jsp">My_Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="AuctionHistory.jsp">Auction_History</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="postQuestion.jsp">Help_QA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ChooseAuctionItem.jsp">Sell_Item</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="BidStatus.jsp">Bid_Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Logout.jsp">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
+
 
 	<%
 		try

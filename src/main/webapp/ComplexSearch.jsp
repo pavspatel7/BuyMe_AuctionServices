@@ -35,10 +35,16 @@
                     <a class="nav-link" href="DisplayAlert.jsp">My_Alerts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">XYZ</a>
+                    <a class="nav-link" href="AuctionHistory.jsp">Auction_History</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="postQuestion.jsp">Help</a>
+                    <a class="nav-link" href="postQuestion.jsp">Help_QA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ChooseAuctionItem.jsp">Sell_Item</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="BidStatus.jsp">Bid_Alerts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Logout.jsp">Log Out</a>
@@ -47,7 +53,7 @@
         </div>
     </div>
 </nav>
-<br><br><br><br>
+<br><br><br><br><br>
 
 <main class="flex-shrink-0">
     <div class="container-fluid h-100 minHeight">

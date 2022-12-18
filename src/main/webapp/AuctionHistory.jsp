@@ -35,16 +35,22 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="">ABC</a>
+                    <a class="nav-link" href="DisplayAlert.jsp">My_Alerts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">DEF</a>
+                    <a class="nav-link" href="AuctionHistory.jsp">Auction_History</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="postQuestion.jsp">Help_QA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">XYZ</a>
+                    <a class="nav-link" href="ChooseAuctionItem.jsp">Sell_Item</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Logout.jsp">LogOut</a>
+                    <a class="nav-link" href="BidStatus.jsp">Bid_Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Logout.jsp">Log Out</a>
                 </li>
             </ul>
         </div>
