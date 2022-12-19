@@ -150,6 +150,18 @@
 			{
 				if(rs.getInt("Active") == 1)
 				{
+					int p1 = 0;
+					int temp = rs.getInt("Auction_Num");
+					String q1 = "SELECT * FROM clone.buyer_bids WHERE Auction_Num='"+temp+"'";
+					Statement s1 = con.createStatement();
+					ResultSet r1 = s1.executeQuery(q1);
+					while(r1.next())
+					{
+						if(r1.getInt("Bid_Price") > p1)
+						{
+							p1 = r1.getInt("Bid_Price");
+						}
+					}
 %>
 				<tr>
 					<th><%out.println(rs.getString("Pid")); %></th>
