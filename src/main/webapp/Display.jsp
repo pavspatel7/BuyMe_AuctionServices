@@ -110,6 +110,9 @@
 					<%out.print("Quantity"); %>
 				</th>
 				<th>
+					<%out.print("Highest Bid"); %>
+				</th>
+				<th>
 					<%out.print("End Date & Time"); %>
 				</th>
 			</tr>
@@ -298,6 +301,18 @@
 		{
 			if(rs.getInt("Active") == 1)
 			{
+				int p1 = 0;
+				int temp = rs.getInt("Auction_Num");
+				String q1 = "SELECT * FROM clone.buyer_bids WHERE Auction_Num='"+temp+"'";
+				Statement s1 = con.createStatement();
+				ResultSet r1 = s1.executeQuery(q1);
+				while(r1.next())
+				{
+					if(r1.getInt("Bid_Price") > p1)
+					{
+						p1 = r1.getInt("Bid_Price");
+					}
+				}
 %>
 			<tr>
 				<th><%out.println(rs.getString("Pid")); %></th>
@@ -305,6 +320,7 @@
 				<th><%out.println(rs.getString("Description")); %></th>
 				<th><%out.println(rs.getInt("Price")); %></th>
 				<th><%out.println(rs.getInt("Quantity")); %></th>
+				<th><%out.println(p1); %></th>
 				<th><%out.println(rs.getString("End_Date_Time")); %></th>
 			</tr>
 <%
