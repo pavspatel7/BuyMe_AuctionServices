@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
+	pageEncoding="ISO-8859-1" import="Ebay_Clone.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,15 +19,15 @@
 	<%
 		try {
 			//Get the database connection
-			SqlConnection2 db = new SqlConnection2();	
+			ApplicationDB db = new ApplicationDB();	
 			Connection connect = db.getConnection();
 	
 			//Create a SQL statement
 			Statement stmt = connect.createStatement();
 
-			String productID = request.getParameter("productID");
+			String Auction_Num = request.getParameter("Auction_Num");
 
-			String deleteAuction = "DELETE FROM clone.Auction WHERE productId =" + productID;
+			String deleteAuction = "DELETE FROM auctions WHERE Auction_Num =" + Auction_Num;
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps = connect.prepareStatement(deleteAuction);
 			ps.executeUpdate();
