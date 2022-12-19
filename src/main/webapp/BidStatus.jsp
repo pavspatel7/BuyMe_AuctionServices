@@ -148,22 +148,22 @@
 
 							String query6 = "INSERT INTO clone.buyer_bids (User_Name, Auction_Num, Bid_Num, Bid_Price, Date_Time, Upper_Limit, Increment_Price)VALUES('"+userName+"', '"+aId+"', '"+bidId+"', '"+bidAmount+"', '"+currentDateTime+"', '"+rows2.getFloat("Upper_Limit")+"', '"+rows2.getFloat("Increment_Price")+"')";
 							stmt3.executeUpdate(query6);
-							%> <p> 
-									<h2>Alert!</h2>
+														
+							%> <h2>Alert!</h2>
+								<p> 
 										For auction <%= aId %>:<br> 
 										Your auto bidding was generated.  
 								</p>
 							<% 							
 						}
 //************************************** IF USER DOES NOT PASS UPPER LIMIT TEST THEN ALIERT THAT THEIR AUTO BIDDING IS TERMIINATED    ********************************
-
 						else if(rows2.getFloat("Upper_Limit")<= higestprice + rows2.getFloat("Increment_Price"))
 						{
 							ResultSet rows3;
 							query4 = "SELECT p.Brand, p.Model, a.End_Date_Time, a.Increment_Amount, a.Auction_Num FROM clone.product p, clone.auctions a WHERE a.Auction_Num = '"+aId+"' AND p.Pid = '"+pId+"'";
 							rows3 = stmt3.executeQuery(query4);
 					
-							while(rows2.next())
+							while(rows3.next())
 							{
 						%>
 							<p> 

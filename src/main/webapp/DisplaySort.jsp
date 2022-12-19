@@ -114,6 +114,9 @@
 					<%out.print("Quantity"); %>
 				</th>
 				<th>
+					<%out.print("Highest Bid"); %>
+				</th>
+				<th>
 					<%out.print("End Date & Time"); %>				
 				</th>
 			</tr>
@@ -169,6 +172,7 @@
 					<th><%out.println(rs.getString("Description")); %></th>
 					<th><%out.println(rs.getInt("Price")); %></th>
 					<th><%out.println(rs.getInt("Quantity")); %></th>
+					<th><%out.println(p1); %></th>
 					<th><%out.println(rs.getString("End_Date_Time")); %></th>
 				</tr>
 <%
