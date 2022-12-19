@@ -70,6 +70,12 @@
 <table class="table-style">
 			<tr>
 				<th>
+					<%out.print("Product Number"); %>
+				</th>
+				<th>
+					<%out.print("Description"); %>
+				</th>
+				<th>
 					<%out.print("Auction Number"); %>
 				</th>
 				<th>
@@ -95,11 +101,29 @@ try
 		}
 		else
 		{
-			flag = "The auction has ended. The winner is " + rs.getString("Winner");
+			if(rs.getString("Winner") == null)
+			{
+				flag = "The auction is inactive and there is no winner.";
+			}
+			else
+				flag = "The auction has ended. The winner is " + rs.getString("Winner");
+		}
+		String d1 = "";
+		int p2 = 0;
+		int p1 = rs.getInt("Auction_Num");
+		String q1 = "SELECT * FROM clone.product p, clone.product_for_auction pfa, clone.auctions a WHERE p.Pid=pfa.Pid AND pfa.Auction_Num=a.Auction_Num AND a.Auction_Num='"+p1+"'";
+		Statement s1 = con.createStatement();
+		ResultSet r1 = s1.executeQuery(q1);
+		while(r1.next())
+		{
+			p2 = r1.getInt("Pid");
+			d1 = r1.getString("Description");
 		}
 %>
 			<tr>
-				<th><%out.println(rs.getInt("Auction_Num")); %></th>
+				<th><%out.println(p2); %></th>
+				<th><%out.println(d1); %></th>
+				<th><%out.println(p1); %></th>
 				<th><%out.println(flag); %></th>
 			</tr>
 <%

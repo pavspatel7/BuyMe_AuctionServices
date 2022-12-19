@@ -66,15 +66,12 @@ try
 	HttpSession sess = request.getSession(false);
 	String name = (String)sess.getAttribute("user");
 	String input = request.getParameter("pinput");
-	String query = "SELECT * FROM clone.buyer_bids WHERE User_Name='"+name+"' AND Auction_Num='"+input+"'";
+	String query = "SELECT * FROM clone.buyer_bids WHERE User_Name='"+name+"' AND Auction_Num='"+input+"' ORDER BY Bid_Price DESC";
 	ResultSet rs = stmt1.executeQuery(query);
 %>
 	<p class="text-center"><span style="font-size: 25px">Bid History for Auction Number <%out.print(input); %></span></p>
 	<table class="table-style">
 			<tr>
-				<th>
-					<%out.print("Bid Price"); %>
-				</th>
 				<th>
 					<%out.print("Bid Date & Time"); %>
 				</th>
@@ -84,16 +81,19 @@ try
 				<th>
 					<%out.print("Increment Price"); %>
 				</th>
+				<th>
+					<%out.print("Bid Price"); %>
+				</th>
 			</tr>
 <%
 	while(rs.next())
 	{
 %>
 			<tr>
-				<th><%out.println(rs.getInt("Bid_Price")); %></th>
 				<th><%out.println(rs.getString("Date_Time")); %></th>
 				<th><%out.println(rs.getInt("Upper_Limit")); %></th>
 				<th><%out.println(rs.getString("Increment_Price")); %></th>
+				<th><%out.println(rs.getInt("Bid_Price")); %></th>
 			</tr>
 <%
 	}

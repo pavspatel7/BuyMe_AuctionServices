@@ -70,7 +70,7 @@
 					<%out.print("Product Description"); %>
 				</th>
 				<th>
-					<%out.print("Initial Price"); %>
+					<%out.print("Quantity"); %>
 				</th>
 				<th>
 					<%out.print("Winner"); %>
@@ -127,7 +127,7 @@ try
 			<tr>
 				<th><%out.println(rows.getInt("Auction_Num")); %></th>
 				<th><%out.println(rows.getString("Description")); %></th>
-				<th><%out.println(rows.getInt("Initial_Price")); %></th>
+				<th><%out.println(rows.getString("Quantity")); %></th>
 				<th><%out.println(rows.getString("Winner")); %></th>
 				<th><%out.println(rows.getInt("Winning_Price")); %></th>
 			</tr>
