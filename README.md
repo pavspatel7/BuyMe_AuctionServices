@@ -1,1 +1,1 @@
-# Clone by Smit Patel & Romil Patel & Pavitra Patel & Aditi Patel
+# Clone by Pavitra Patel, Smit Patel, Romil Patel, & Aditi Patel
